@@ -1,0 +1,55 @@
+{
+  "name": "source-map-trace",
+  "version": "0.0.1",
+  "description": "Restore the specified location code according to sourceMap.",
+  "author": "chenyueban <jasonchan0527@gmail.com>",
+  "keywords": [
+    "source-map",
+    "source-map-trace"
+  ],
+  "homepage": "https://github.com/chenyueban/source-map-trace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chenyueban/source-map-trace"
+  },
+  "bugs": {
+    "url": "https://github.com/chenyueban/source-map-trace/issues"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "dev": "cross-env NODE_ENV=development rollup -c -w",
+    "test": "jest"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "module": "dist/source-map-trace.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "index.js",
+    "dist"
+  ],
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "source-map": "^0.7.3"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@types/jest": "^25.1.4",
+    "cross-env": "^7.0.2",
+    "cz-conventional-changelog": "3.1.0",
+    "jest": "^25.1.0",
+    "rollup": "^1.32.0",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.26.0",
+    "ts-jest": "^25.2.1",
+    "typescript": "^3.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
