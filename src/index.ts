@@ -1,1 +1,1 @@
-export { default } from './source-map-trace'
+export { default } from "./sourceMapTrace";

@@ -13,6 +13,5 @@
     "lib": ["ESNext"],
     "types": ["node", "jest"]
   },
-  "include": ["src", "global.d.ts"],
-  "exclude": ["**/__tests__"]
+  "include": ["src", "global.d.ts"]
 }
