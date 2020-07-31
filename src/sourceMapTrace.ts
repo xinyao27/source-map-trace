@@ -7,7 +7,7 @@ import type { ErrorDetail, RawSourceMap } from "./interfaces";
 import { LOG_PREFIX } from "./constants";
 
 class SourceMapTrace {
-  private readonly sourceMap: PathLike | RawSourceMap;
+  readonly sourceMap: PathLike | RawSourceMap;
   constructor(sourceMap: PathLike | RawSourceMap) {
     this.sourceMap = sourceMap;
   }
