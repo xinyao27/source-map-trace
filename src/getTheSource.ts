@@ -1,7 +1,7 @@
 import { SourceMapConsumer } from "source-map";
+import type { PathLike } from "fs";
 import { readFileSync } from "fs";
 import { normalize } from "path";
-import type { PathLike } from "fs";
 import * as ErrorStackParser from "error-stack-parser";
 import { LOG_PREFIX } from "./constants";
 import type {
@@ -72,16 +72,20 @@ export async function getTheSourceByLineAndColumn(
   }
 }
 
-export async function getTheSourceByError(
-  sourceMap: PathLike | RawSourceMap,
-  errorDetail: ErrorDetail
-) {
+export function getStackFrame(errorDetail: ErrorDetail) {
   const error = new Error();
   for (const key in errorDetail) {
     // @ts-ignore
     error[key] = errorDetail[key];
   }
-  const stackFrame = ErrorStackParser.parse(error)[0];
+  return ErrorStackParser.parse(error)[0];
+}
+
+export async function getTheSourceByError(
+  sourceMap: PathLike | RawSourceMap,
+  errorDetail: ErrorDetail
+) {
+  const stackFrame = getStackFrame(errorDetail);
   return getTheSourceByLineAndColumn(
     sourceMap,
     stackFrame.lineNumber!,
