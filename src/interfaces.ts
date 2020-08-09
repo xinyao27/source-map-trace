@@ -3,6 +3,12 @@ export interface SourceMapTraceCode {
   number: number;
   code: string;
 }
+
+export interface Result {
+  parsed:any
+  code?: SourceMapTraceCode[]
+}
+
 export interface RawSourceMap {
   version: number;
   file: string;

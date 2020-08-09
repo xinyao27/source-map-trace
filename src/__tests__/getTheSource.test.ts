@@ -9,7 +9,13 @@ describe("getTheSourceByLineAndColumn", () => {
   const sourceMap = path.resolve(__dirname, "./sourceMap/app.js.map");
   const line = 43;
   const column = 12231;
-  const target = [
+  const parsed = {
+    column: 12,
+    line: 16,
+    name: null,
+    source: "webpack:///src/components/HelloWorld.vue",
+  };
+  const code = [
     { highlight: false, number: 14, code: "  methods: {" },
     { highlight: false, number: 15, code: "    throwError(){" },
     { highlight: true, number: 16, code: "      throw new Error('test')" },
@@ -21,7 +27,8 @@ describe("getTheSourceByLineAndColumn", () => {
   test("Should be able to parse the source code correctly", async () => {
     const result = await getTheSourceByLineAndColumn(sourceMap, line, column);
 
-    expect(result).toEqual(target);
+    expect(result.parsed).toEqual(parsed);
+    expect(result.code).toEqual(code);
   });
 
   test("Should be able to parse the source code correctly after passing in the map file", async () => {
@@ -33,7 +40,8 @@ describe("getTheSourceByLineAndColumn", () => {
       column
     );
 
-    expect(result).toEqual(target);
+    expect(result.parsed).toEqual(parsed);
+    expect(result.code).toEqual(code);
   });
 
   test("It should throw error after passing in the error message", async () => {
@@ -54,7 +62,13 @@ describe("getTheSourceByError", () => {
     stack:
       "Error: throw UNCAUGHT_ERROR\\n    at HTMLButtonElement.<anonymous> (http://127.0.0.1:8080/js/app.96d3bcc4.js:31:2855)",
   };
-  const target = [
+  const parsed = {
+    source: "webpack:///src/scripts/event.js",
+    line: 22,
+    column: 8,
+    name: null,
+  };
+  const code = [
     {
       highlight: false,
       number: 20,
@@ -84,7 +98,7 @@ describe("getTheSourceByError", () => {
   ];
   test("Should be able to parse the source code correctly", async () => {
     const result = await getTheSourceByError(sourceMap, error);
-
-    expect(result).toEqual(target);
+    expect(result.parsed).toEqual(parsed);
+    expect(result.code).toEqual(code);
   });
 });

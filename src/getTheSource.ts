@@ -4,17 +4,13 @@ import { readFileSync } from "fs";
 import { normalize } from "path";
 import * as ErrorStackParser from "error-stack-parser";
 import { LOG_PREFIX } from "./constants";
-import type {
-  ErrorDetail,
-  RawSourceMap,
-  SourceMapTraceCode,
-} from "./interfaces";
+import type { ErrorDetail, RawSourceMap, Result } from "./interfaces";
 
 export async function getTheSourceByLineAndColumn(
   sourceMap: PathLike | RawSourceMap,
   line: number,
   column: number
-): Promise<SourceMapTraceCode[] | void> {
+): Promise<Result> {
   let rawSourceMap;
   if (typeof sourceMap === "string") {
     const sourceMapFile = readFileSync(sourceMap, { encoding: "utf8" });
@@ -59,17 +55,19 @@ export async function getTheSourceByLineAndColumn(
     const start = parsed.line >= 3 ? parsed.line - 3 : 0;
     const end = start + 5 >= length ? length : start + 5;
 
-    const result = [];
+    const code = [];
     for (let i = start; i <= end; i++) {
-      result.push({
+      code.push({
         highlight: i + 1 === parsed.line,
         number: i + 1,
         code: lines[i],
       });
     }
 
-    return result;
+    return { parsed, code };
   }
+
+  return { parsed };
 }
 
 export function getStackFrame(errorDetail: ErrorDetail) {
@@ -86,6 +84,7 @@ export async function getTheSourceByError(
   errorDetail: ErrorDetail
 ) {
   const stackFrame = getStackFrame(errorDetail);
+
   return getTheSourceByLineAndColumn(
     sourceMap,
     stackFrame.lineNumber!,
