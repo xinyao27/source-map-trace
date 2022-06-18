@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/chenyueban/source-map-trace/issues"
   },
-  "main": "./dist/index.cjs",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/*"
