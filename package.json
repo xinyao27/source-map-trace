@@ -1,6 +1,6 @@
 {
   "name": "source-map-trace",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Restore the specified location code according to sourceMap.",
   "keywords": [
     "source-map",
