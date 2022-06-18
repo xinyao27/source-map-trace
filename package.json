@@ -1,6 +1,5 @@
 {
   "name": "source-map-trace",
-  "type": "module",
   "version": "0.2.4",
   "description": "Restore the specified location code according to sourceMap.",
   "keywords": [
@@ -18,15 +17,7 @@
     "url": "https://github.com/chenyueban/source-map-trace/issues"
   },
   "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    }
-  },
   "files": [
     "dist/*"
   ],
