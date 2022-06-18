@@ -1,5 +1,12 @@
 
 
+## [0.2.5](https://github.com/chenyueban/source-map-trace/compare/0.2.4...0.2.5) (2022-06-18)
+
+
+### Bug Fixes
+
+* 去掉 module ([6ebd623](https://github.com/chenyueban/source-map-trace/commit/6ebd6238d66aac2d7afde95e74de45dba3ea9a72))
+
 ## [0.2.4](https://github.com/chenyueban/source-map-trace/compare/0.2.3...0.2.4) (2022-06-18)
 
 
