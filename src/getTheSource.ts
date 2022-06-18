@@ -2,7 +2,7 @@ import type { PathLike } from 'fs'
 import { readFileSync } from 'fs'
 import { normalize } from 'path'
 import { SourceMapConsumer } from 'source-map'
-import * as ErrorStackParser from 'error-stack-parser'
+import ErrorStackParser from 'error-stack-parser'
 import { LOG_PREFIX } from './constants'
 import type { ErrorDetail, RawSourceMap, Result } from './interfaces'
 
@@ -75,7 +75,7 @@ export function getStackFrame(errorDetail: ErrorDetail) {
     // @ts-expect-error 设置 error key
     error[key] = errorDetail[key]
   }
-  return ErrorStackParser.parse(error)[0]
+  return ErrorStackParser.parse(error)?.[0]
 }
 
 export async function getTheSourceByError(

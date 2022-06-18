@@ -1,6 +1,7 @@
 import * as path from 'path'
 import * as fs from 'fs'
 import {
+  getStackFrame,
   getTheSourceByError,
   getTheSourceByLineAndColumn,
 } from '../getTheSource'
@@ -98,5 +99,27 @@ describe('getTheSourceByError', () => {
     const result = await getTheSourceByError(sourceMap, error)
     expect(result.parsed).toEqual(parsed)
     expect(result.code).toEqual(code)
+  })
+})
+
+describe('getStackFrame', () => {
+  const error = {
+    name: 'Error',
+    message: 'Uncaught Error: throw UNCAUGHT_ERROR',
+    filename: 'http://127.0.0.1:8080/js/app.96d3bcc4.js',
+    lineno: 31,
+    colno: 2855,
+    stack:
+      'Error: throw UNCAUGHT_ERROR\\n    at HTMLButtonElement.<anonymous> (http://127.0.0.1:8080/js/app.96d3bcc4.js:31:2855)',
+  }
+  const parsed = {
+    columnNumber: 2855,
+    fileName: 'Error: throw UNCAUGHT_ERROR\\n    at HTMLButtonElement.<anonymous> http://127.0.0.1:8080/js/app.96d3bcc4.js',
+    lineNumber: 31,
+    source: 'Error: throw UNCAUGHT_ERROR\\n    at HTMLButtonElement.<anonymous> (http://127.0.0.1:8080/js/app.96d3bcc4.js:31:2855)',
+  }
+  test('Should be able to parse the stackFrame correctly', async() => {
+    const stackFrame = await getStackFrame(error)
+    expect(stackFrame).toEqual(parsed)
   })
 })
