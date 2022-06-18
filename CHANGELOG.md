@@ -1,5 +1,7 @@
 
 
+## [0.2.1](https://github.com/chenyueban/source-map-trace/compare/0.2.0...0.2.1) (2022-06-18)
+
 # 0.2.0 (2022-06-18)
 
 
