@@ -1,5 +1,12 @@
 
 
+## [0.2.4](https://github.com/chenyueban/source-map-trace/compare/0.2.3...0.2.4) (2022-06-18)
+
+
+### Bug Fixes
+
+* 修复 package.json 入口扩展名错误 ([838587c](https://github.com/chenyueban/source-map-trace/commit/838587cb64a50446e13669ce50ee963d2da6a237))
+
 ## [0.2.3](https://github.com/chenyueban/source-map-trace/compare/0.2.2...0.2.3) (2022-06-18)
 
 ## [0.2.2](https://github.com/chenyueban/source-map-trace/compare/0.2.1...0.2.2) (2022-06-18)
