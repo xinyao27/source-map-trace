@@ -2,11 +2,12 @@
   "name": "source-map-trace",
   "version": "0.1.3",
   "description": "Restore the specified location code according to sourceMap.",
-  "author": "chenyueban <jasonchan0527@gmail.com>",
   "keywords": [
     "source-map",
     "source-map-trace"
   ],
+  "license": "MIT",
+  "author": "chenyueban <jasonchan0527@gmail.com>",
   "homepage": "https://github.com/chenyueban/source-map-trace",
   "repository": {
     "type": "git",
@@ -15,45 +16,57 @@
   "bugs": {
     "url": "https://github.com/chenyueban/source-map-trace/issues"
   },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist/*"
+  ],
+  "sideEffects": false,
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production rollup -c",
+    "build": "unbuild",
     "dev": "cross-env NODE_ENV=development rollup -c -w",
     "test": "jest",
-    "update:deps": "yarn upgrade-interactive --latest"
+    "update:deps": "pnpm update -i -r --latest",
+    "preinstall": "npx only-allow pnpm",
+    "lint": "eslint . --fix",
+    "prepare": "husky install",
+    "release": "release-it"
   },
-  "license": "MIT",
-  "main": "index.js",
-  "module": "dist/source-map-trace.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "index.js",
-    "dist"
-  ],
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "error-stack-parser": "^2.0.6",
     "source-map": "^0.7.3"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-node-resolve": "^8.4.0",
-    "@types/jest": "^26.0.8",
+    "@chenyueban/eslint-config": "^1.0.11",
+    "@chenyueban/tsconfig": "^2.1.0",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/jest": "^28.1.2",
+    "@types/node": "^18.0.0",
+    "commitizen": "^4.2.4",
     "cross-env": "^7.0.2",
-    "cz-conventional-changelog": "3.2.0",
-    "jest": "^26.2.1",
+    "cz-conventional-changelog": "3.3.0",
+    "eslint": "^8.18.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.1",
+    "lint-staged": "^13.0.2",
+    "release-it": "^15.0.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.23.0",
-    "rollup-plugin-terser": "^6.1.0",
-    "rollup-plugin-typescript2": "^0.27.1",
-    "ts-jest": "^26.1.4",
-    "typescript": "^3.9.7"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+    "ts-jest": "^28.0.5",
+    "typescript": "^4.7.4",
+    "unbuild": "^0.7.4"
   }
 }

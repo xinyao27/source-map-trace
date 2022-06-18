@@ -1,17 +1,13 @@
 {
+  "extends": "@chenyueban/tsconfig",
   "compilerOptions": {
-    "sourceMap": false,
-    "declaration": true,
-    "target": "ES6",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "allowJs": false,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "noImplicitThis": false,
-    "removeComments": true,
-    "lib": ["ESNext"],
-    "types": ["node", "jest"]
+    "outDir": "dist"
   },
-  "include": ["src", "global.d.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules/",
+    "dist/"
+  ]
 }
