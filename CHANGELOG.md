@@ -1,5 +1,12 @@
 
 
+## [0.2.6](https://github.com/chenyueban/source-map-trace/compare/0.2.5...0.2.6) (2022-06-18)
+
+
+### Bug Fixes
+
+* 修复后缀名错误 ([d7c98ef](https://github.com/chenyueban/source-map-trace/commit/d7c98ef1b2feaffa6fb1214a039218e88467ccba))
+
 ## [0.2.5](https://github.com/chenyueban/source-map-trace/compare/0.2.4...0.2.5) (2022-06-18)
 
 
