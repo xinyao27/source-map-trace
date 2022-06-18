@@ -2,7 +2,7 @@ import type { PathLike } from 'fs'
 import { readFileSync } from 'fs'
 import { normalize } from 'path'
 import { SourceMapConsumer } from 'source-map'
-import ErrorStackParser from 'error-stack-parser'
+import * as ErrorStackParser from 'error-stack-parser'
 import { LOG_PREFIX } from './constants'
 import type { ErrorDetail, RawSourceMap, Result } from './interfaces'
 

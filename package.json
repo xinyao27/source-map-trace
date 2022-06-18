@@ -39,13 +39,13 @@
     "preinstall": "npx only-allow pnpm",
     "lint": "eslint . --fix",
     "prepare": "husky install",
-    "release": "release-it"
+    "release": "npm run build && release-it"
   },
   "engines": {
     "node": ">=16.0.0"
   },
   "dependencies": {
-    "error-stack-parser": "^2.1.4",
+    "error-stack-parser": "2.0.6",
     "source-map": "^0.8.0-beta.0"
   },
   "devDependencies": {
